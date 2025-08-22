@@ -1,0 +1,75 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    container_name: "todo_db_cont"
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: rahul
+      POSTGRES_DB: django_todo_react
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}" ]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    networks:
+      - todo-app-nw
+  
+  api:
+    build:
+      context: ./backend
+    container_name: "todo_backend_cont"
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    # environment:
+    #   DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+    #   DEBUG: ${DEBUG}
+    #   DJANGO_LOGLEVEL: ${DJANGO_LOGLEVEL}
+    #   DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
+    #   DATABASE_ENGINE: ${DATABASE_ENGINE}
+    #   DATABASE_NAME: ${DATABASE_NAME}
+    #   DATABASE_USERNAME: ${DATABASE_USERNAME}
+    #   DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+    #   DATABASE_HOST: ${DATABASE_HOST}
+    #   DATABASE_PORT: ${DATABASE_PORT}
+    env_file:
+     - ./backend/.env
+    networks:
+      - todo-app-nw
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8000/admin || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  website:
+    build:
+      context: ./frontend
+    container_name: "todo_frontend_cont"
+    ports:
+      - "81:80"
+#    volumes:
+#      - .:/app
+    # command: sh -c "npm run dev"
+    depends_on:
+      - api
+    networks:
+      - todo-app-nw
+
+
+
+volumes:
+  pgdata:
+
+networks:
+  todo-app-nw:
