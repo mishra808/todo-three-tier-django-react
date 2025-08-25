@@ -30,13 +30,14 @@ else
     JENKINS_VERSION = $(jenkins --version)
     print_green "Jenkins installation complete."
     print_green "Jenkins Version : $JENKINS_VERSION"
+
+     # Print the fetched IP address along with port 8080
+    print_yellow "Your Application is running on: $public_ip:8080"
+    print_yellow "Please use the following initial password to unlock Jenkins:"
+    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
     
 fi
 
 # Fetch public IP address using curl
 public_ip=$(curl -s https://api.ipify.org)
 
- # Print the fetched IP address along with port 8080
-    print_yellow "Your Application is running on: $public_ip:8080"
-    print_yellow "Please use the following initial password to unlock Jenkins:"
-    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
