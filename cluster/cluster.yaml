@@ -1,0 +1,13 @@
+# cluster.yaml
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: todo-app-cluster0090
+  region: us-west-2
+  version: "1.30"
+
+managedNodeGroups:
+- name: todo-nodes
+  instanceType: m5.large
+  desiredCapacity: 2
