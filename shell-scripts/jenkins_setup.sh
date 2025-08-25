@@ -39,4 +39,4 @@ public_ip=$(curl -s https://api.ipify.org)
  # Print the fetched IP address along with port 8080
     print_yellow "Your Application is running on: $public_ip:8080"
     print_yellow "Please use the following initial password to unlock Jenkins:"
-    print_yellow cat /var/lib/jenkins/secrets/initialAdminPassword
+    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
