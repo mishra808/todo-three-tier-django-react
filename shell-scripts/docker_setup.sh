@@ -22,4 +22,4 @@ else
     print_green "Docker installed successfully"
     newgrp docker
 
-   
+fi
