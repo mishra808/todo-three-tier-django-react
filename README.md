@@ -154,3 +154,41 @@ python manage.py runserver
 
 #### checking container
 docker exec -it -u root fb6f28d5b5eef8470ebb0bf6f09fb41c7b6a242252e7fddc4d306930886312b1 bash
+
+
+# Project Setup
+
+## Technologies used in Project
+
+- Github (code)
+- Jenkins (CI)
+- Docker (Containerization)
+- OWASP (Dependencies scan)
+- Sonarqube (Quality Test)
+- Trivy (FileSystem scan)
+- AWS EKS (Cluster)
+- ArgoCD (CD)
+- Helm
+
+## Step 1
+
+## Setup of an Instance and software
+
+- Creating an EC2 Instance
+- Run shell scripts all script to install dependencies
+- Open Followings Ports to allow Traffic
+    - 8080 - Jenkins Master
+    - 80 - Http
+    - 22 - SSH
+    - 443 - HTTPS
+    - 9000 - Sonarqube
+    - 30000-32767 - Kubernetes
+    - 465 - SMTPS
+    - 81 - FrontEnd
+    - 8000 - Backend
+    - 25 - SMTP
+    - 6443 - K8s
+
+- Setup Jenkins Master (Follow README of Jenkins)
+
+
