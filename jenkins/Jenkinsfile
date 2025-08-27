@@ -21,7 +21,7 @@ pipeline {
             
               steps{
                 sh 'whoami'
-                // sh 'cp -r /var/lib/jenkins /home/ubuntu/jenkins'
+                sh 'cp -r /var/lib/jenkins /home/ubuntu/jenkins'
               }
 
         }
