@@ -8,23 +8,23 @@ pipeline {
 
         stage("Git: Code Checkout"){
             steps{
-                //   dir('/home/ubuntu/jenkins') { 
+                  dir('/home/ubuntu/jenkins') { 
                     // git credentialsId: 'f87a34a8-0e09-45e7-b9cf-6dc68feac670',
                     git url : "https://github.com/mishra808/todo-three-tier-django-react.git",
                     branch: "main"
-                // }
+                }
 
             }
             
         }
-        stage ("Transfer code to Source Folder"){
+        // stage ("Transfer code to Source Folder"){
             
-              steps{
-                sh 'whoami'
-                sh 'cp -r /var/lib/jenkins/workspace/todo-app2 /home/ubuntu/jenkins'
-              }
+        //       steps{
+        //         sh 'whoami'
+        //         sh 'cp -r /var/lib/jenkins/workspace/todo-app2 /home/ubuntu/jenkins'
+        //       }
 
-        }
+        // }
     }
 
 }
