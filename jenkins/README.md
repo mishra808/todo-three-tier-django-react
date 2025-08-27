@@ -50,7 +50,10 @@
 
 ## Setup all Dependencies
 
-### OWASP
+### Shared Library
+- Manage Jenkins -> System -> Global Trusted Pipeline
+- main in default version (Branch Name)
+-  GIT HTTP URL
+- save
 
-- Manage Jenkins -> Tools
-
+## Create Pipeline
