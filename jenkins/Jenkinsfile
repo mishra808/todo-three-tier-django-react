@@ -18,7 +18,7 @@ pipeline {
         }
         stage ("Transfer code to Source Folder"){
               steps{
-                sh 'cp /var/lib/jenkins /home/ubuntu/jenkins'
+                sh 'cp -r /var/lib/jenkins /home/ubuntu/jenkins'
               }
 
         }
