@@ -8,7 +8,7 @@ pipeline {
 
         stage("Git: Code Checkout"){
             steps{
-                 dir('todo-app') { 
+                 dir('/home/ubuntu/todo-app') { 
                     // git credentialsId: 'f87a34a8-0e09-45e7-b9cf-6dc68feac670',
                     git url : "https://github.com/mishra808/todo-three-tier-django-react.git",
                     branch: "main"
