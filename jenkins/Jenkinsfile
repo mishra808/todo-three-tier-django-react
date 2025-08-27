@@ -18,10 +18,11 @@ pipeline {
             
         }
         stage ("Transfer code to Source Folder"){
-            sh 'whoami'
-            //   steps{
-            //     sh 'cp -r /var/lib/jenkins /home/ubuntu/jenkins'
-            //   }
+            
+              steps{
+                sh 'whoami'
+                // sh 'cp -r /var/lib/jenkins /home/ubuntu/jenkins'
+              }
 
         }
     }
